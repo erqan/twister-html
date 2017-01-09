@@ -848,21 +848,21 @@ function openConsoleModal()
 
         item.find('.time').text(Date.now());
 
-        if (data.result && data.result.type) {
-            item.find('.type').text(data.result.type);
-            item.find('.from').text(data.result.from);
+        if (data.type) {
+            item.find('.type').text(data.type);
+            item.find('.from').text(data.from);
             if (data.type === 'post') {
-                item.find('.to').text(data.result.postpoard);
-                item.find('.msg').text(data.result.post.userpost.msg + data.result.post.userpost.msg2);
+                item.find('.to').text(data.postpoard);
+                item.find('.msg').text(data.post.userpost.msg + (data.post.userpost.msg2 ? data.post.userpost.msg2 : ''));
             } else if (data.type === 'mention') {
-                item.find('.to').text(data.result.to);
-                item.find('.msg').text(data.result.post.userpost.msg + data.result.post.userpost.msg2);
-            } else if (data.type === 'dm') {
-                item.find('.to').text(data.result.to);
-                item.find('.msg').text(data.result.msg);
+                item.find('.to').text(data.to);
+                item.find('.msg').text(data.post.userpost.msg + (data.post.userpost.msg2 ? data.post.userpost.msg2 : ''));
+            } else if (data.type === 'DM') {
+                item.find('.to').text(data.to);
+                item.find('.msg').text(data.msg);
             }
         } else if (data.result)
-            item.find('.msg').text(data.result);
+            item.find('.msg').text(JSON.stringify(data.result));
         else
             item.find('.msg').text(msg.data);
 
@@ -905,7 +905,7 @@ function openConsoleModal()
                     continue;
                 }
 
-                c.params.push(strC[i]);
+                c.params.push(parseInt(strC[i]));
                 tmp = '';
             }
 

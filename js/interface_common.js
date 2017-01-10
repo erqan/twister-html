@@ -861,10 +861,15 @@ function openConsoleModal()
                 item.find('.to').text(data.to);
                 item.find('.msg').text(data.msg);
             }
-        } else if (data.result)
-            item.find('.msg').text(JSON.stringify(data.result));
-        else
-            item.find('.msg').text(msg.data);
+        } else if (data.result) {
+            var pre=$('<pre></pre>');
+            pre.text(JSON.stringify(data.result, undefined, 2));
+            item.find('.msg').append(pre);
+        } else {
+            var pre=$('<pre></pre>');
+            pre.text(JSON.stringify(data, undefined, 2));
+            item.find('.msg').append(pre);
+        }
 
         history.append(item);
     };

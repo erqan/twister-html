@@ -852,7 +852,7 @@ function openConsoleModal()
             item.find('.type').text(data.type);
             item.find('.from').text(data.from);
             if (data.type === 'post') {
-                item.find('.to').text(data.postpoard);
+                item.find('.to').text(data.postboard);
                 item.find('.msg').text(data.post.userpost.msg + (data.post.userpost.msg2 ? data.post.userpost.msg2 : ''));
             } else if (data.type === 'mention') {
                 item.find('.to').text(data.to);
